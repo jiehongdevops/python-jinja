@@ -20,7 +20,7 @@ class JiehongEmail:
         smtp_server = smtplib.SMTP(smtp_host,587)
         smtp_server.starttls()
         smtp_server.login(self.sender,self.sender_password)
-        smtp_server.sendmail(self.sender,self.receivers,msg.as_string())
+        smtp_server.sendmail(self.sender,self.receivers+self.cc,msg.as_string())
         smtp_server.quit() 
         return
     def sendHTMLMail(self):
@@ -35,10 +35,9 @@ class JiehongEmail:
         smtp_server = smtplib.SMTP(smtp_host,587)
         smtp_server.starttls()
         smtp_server.login(self.sender,self.sender_password)
-        smtp_server.sendmail(self.sender,self.receivers,msg.as_string())
+        smtp_server.sendmail(self.sender,self.receivers+self.cc,msg.as_string())
         smtp_server.quit() 
         return
-
 
 
 from jinja2 import Environment
